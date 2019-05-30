@@ -2,10 +2,9 @@
 Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
-   
-// Study guide for this project - https://drive.google.com/file/d/1OD1diUsTMdpfMDv677TfL1xO2CEkykSz/view?usp=sharing
 
-
+// let indx = listArray.indexOf(4)
+// console.log(indx);
 /*** 
    Add your global variables that store the DOM elements you will 
    need to reference and/or manipulate. 
@@ -16,9 +15,13 @@ FSJS project 2 - List Filter and Pagination
    will only be used inside of a function, then it can be locally 
    scoped to that function.
 ***/
+const ul = document.getElementsByTagName('ul');
+var list = document.getElementsByClassName('student-item');
+let page = 1; // Hard code page number which will be dynamically changed later
+const numPages = Math.ceil(list.length / 10);
+const itemsPerPage = 10; //Math.round(list.length / numPages);
 
-
-
+console.log(numPages);
 
 /*** 
    Create the `showPage` function to hide all of the items in the 
@@ -35,7 +38,29 @@ FSJS project 2 - List Filter and Pagination
        "invoke" the function 
 ***/
 
+const showPage = (list, page) => {
+  
+   let lists = Array.from(list);
+   let start = (page * itemsPerPage) - itemsPerPage;
+   let end = page * itemsPerPage;
 
+   for (let i = 0; i < list.length; i++) {
+     
+      lists[i].style.display = 'none';
+      if (lists.indexOf(lists[i]) >= start && lists.indexOf(lists[i]) <= end) {
+         lists[i].style.display = 'block';
+         console.log(lists[i]);
+      }
+         // if (i < itemsPerPage){
+         //    console.log(list[i]); 
+         //    list[i].style.display = 'block';
+
+         // }
+      
+   }
+}
+
+ showPage(list, page);
 
 
 /*** 
@@ -43,8 +68,7 @@ FSJS project 2 - List Filter and Pagination
    functionality to the pagination buttons.
 ***/
 
-
-
+// const appendPageLinks = () => {};
 
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
