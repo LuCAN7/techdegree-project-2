@@ -5,9 +5,9 @@ FSJS project 2 - List Filter and Pagination
 
 const ul = document.getElementsByTagName('ul');
 const list = document.getElementsByClassName('student-item');
-let page = 1; // Hard code page number which will be dynamically changed later
 const itemsPerPage = 10; //Math.round(list.length / numPages);
 const numPages = Math.ceil(list.length / itemsPerPage);
+let page = 1; // Hard code page number which will be dynamically changed later
 
 
 const showPage = (list, page) => {
@@ -49,26 +49,21 @@ const appendPageLinks = (list) => {
       a.setAttribute('href', '#')
       a.textContent = i;
       
-     
-         // for(let i = 0; i < list.length; i++){
-         // //    if(){
-            
-         // //    }
-         // a.addEventListener('click', (e) => {
-         //    page = parseInt(e.target.textContent);
-         //    showPage(list, page);
-            
-         //    console.log(li.className);
-         // });
-        
-
-         // }
-      
-      
-    
-   }
       paginationLinks.firstElementChild.firstElementChild.className = 'active'
-    
+     
+     a.addEventListener('click', (e) => {
+        page = parseInt(e.target.textContent);
+        showPage(list, page);
+        let a = document.querySelectorAll('a');
+        
+        for (let i = 0; i < a.length; i++) {
+           a[i].className = ''; 
+         }
+         e.target.className = 'active';
+      });
+      
+   }
+   
 }
 
 appendPageLinks(list);
