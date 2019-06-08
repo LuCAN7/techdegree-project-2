@@ -4,24 +4,25 @@ FSJS project 2 - List Filter and Pagination
 ******************************************/
 
 const ul = document.getElementsByTagName("ul");
-   let list = Array.from(document.getElementsByClassName("student-item"));
-   const itemsPerPage = 10;
-   const numPages = Math.ceil(list.length / itemsPerPage);
-   let page = 1; // Hard code first page will be dynamically changed
+let list = Array.from(document.getElementsByClassName("student-item"));
+const itemsPerPage = 10;
+const numPages = Math.ceil(list.length / itemsPerPage);
+let page = 1; // Hard code first page will be dynamically changed
 
-   const showPage = (list, page) => {
-      // Setup number of items per page start and end index
-      const start = page * itemsPerPage - itemsPerPage;
-      const end = page * itemsPerPage - 1;
-      // Loop through student list items and display the corresponding list items
-      for (let i = 0; i < list.length; i++) {
-         // Hides and diplay 10 Students per page
-         list[i].style.display = "none";
-         if (list.indexOf(list[i]) >= start && list.indexOf(list[i]) <= end) {
-            list[i].style.display = "block";
-         } 
-      }
+const showPage = (list, page) => {
+   // Setup number of items per page start and end index
+   const start = page * itemsPerPage - itemsPerPage;
+   const end = page * itemsPerPage - 1;
+   // Loop through student list items and display the corresponding list items
+   for (let i = 0; i < list.length; i++) {
+      // Hides and diplay 10 Students per page
+      list[i].style.display = "none";
+      if (list.indexOf(list[i]) >= start && list.indexOf(list[i]) <= end) {
+         list[i].style.display = "block";
+      } 
+   }
 };
+
 showPage(list, page);
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
@@ -60,7 +61,6 @@ const appendPageLinks = (list) => {
 };
 
 appendPageLinks(list);
-
 /*
 EXTRA CREDIT
 ************
